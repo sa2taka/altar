@@ -1,8 +1,21 @@
 rules_version = '2';
+
+function isUserAuthenticated(userID) {
+  return request.auth.uid == userID;
+}
+
+function existingData() {
+  return resource.data;
+}
+
+function incomingData() {
+  return request.resource.data;
+}
+
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if false;
+    match /users/{UserId} {
+      allow read, write: if isUserAuthenticated(UserId)
     }
   }
 }
