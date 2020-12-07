@@ -1,25 +1,10 @@
-import React, { useCallback } from 'react';
-import { Box, Button, Container } from '@material-ui/core';
-import { GitHub } from '@material-ui/icons';
-import './Home.scss';
-import { signinWithGithubUsingFirebase } from '@/libs/github';
+import React, { useContext } from 'react';
+import { UnauthHome } from './UnauthHome';
+import { AuthContext } from '../../context/auth';
 
 interface Props {}
 
-export const Home: React.FC<Props> = (props) => {
-  const onClickuseAuthButton = useCallback(signinWithGithubUsingFirebase, []);
-  return (
-    <Container>
-      <Button className="github-button" onClick={onClickuseAuthButton}>
-        <Box display={'flex'} alignItems={'center'}>
-          <Box my={'auto'}>
-            <GitHub />
-          </Box>
-          <Box ml={1} my={'auto'}>
-            Sign in with Github
-          </Box>
-        </Box>
-      </Button>
-    </Container>
-  );
+export const Home: React.FC<Props> = () => {
+  const auth = useContext(AuthContext);
+  return auth.authStatus ? <h1>auth home</h1> : <UnauthHome />;
 };
