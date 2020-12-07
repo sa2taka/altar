@@ -5,16 +5,31 @@
     "node": true,
     "browser": true
   },
-  "plugins": ["react", "prettier"],
+  "plugins": [
+    "react",
+    "@typescript-eslint"
+  ],
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    }
+    },
+    "project": "./tsconfig.json"
   },
-  "extends": ["eslint:recommended", "prettier", "plugin:react/recommended", "prettier/react"],
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "prettier",
+    "plugin:react/recommended",
+    "prettier/react",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "rules": {
-    "prettier/prettier": "error"
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "react/prop-types": "off"
   }
 }

@@ -12,7 +12,7 @@
     "format": "run-s format:eslint format:prettier",
     "format:eslint": "yarn lint:eslint --fix",
     "format:prettier": "yarn lint:prettier --write",
-    "lint:eslint": "eslint --ignore-path .gitignore .",
+    "lint:eslint": "eslint --ignore-path .gitignore ./src/**/*",
     "lint:prettier": "prettier . \"!test*\" --check"
   },
   "dependencies": {
@@ -31,6 +31,8 @@
   "devDependencies": {
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.9.0",
+    "@typescript-eslint/parser": "^4.9.0",
     "css-loader": "^5.0.1",
     "dart-sass": "^1.25.0",
     "eslint": "^7.14.0",
