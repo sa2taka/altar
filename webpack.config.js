@@ -9,7 +9,10 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
   },
-  devtool: 'source-map',
+  devServer: {
+    port: 8080,
+    hot: true,
+  },
   module: {
     rules: [
       {
