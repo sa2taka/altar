@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
 import ReactDOM from 'react-dom';
@@ -10,7 +10,7 @@ import { ThemeContext } from './context/theme';
 import { AuthContext } from './context/auth';
 import { onChangeAuthState } from './libs/github';
 import { authState } from './context/auth';
-import { Loading } from './components/atom/Loading/index';
+import { SquareLoading } from './components/atom/Loading/SquareLoading';
 
 const app = document.getElementById('app');
 
@@ -20,7 +20,7 @@ const AppComponent: React.FC = () => {
   const [user, setUser] = useState<authState | null>(null);
   const [isLoading, setLoading] = useState<boolean>(true);
 
-  useMemo(() => {
+  useEffect(() => {
     onChangeAuthState((changedUser) => {
       setUser(changedUser);
       setLoading(false);
@@ -32,7 +32,7 @@ const AppComponent: React.FC = () => {
       <ThemeContext.Provider value={{ theme, setTheme }}>
         <MuiThemeProvider theme={theme}>
           <CssBaseline />
-          {isLoading ? <Loading /> : <Routing />}
+          {isLoading ? <SquareLoading /> : <Routing />}
         </MuiThemeProvider>
       </ThemeContext.Provider>
     </AuthContext.Provider>

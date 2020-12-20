@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.scss';
+import './SquareLoading.scss';
 import { primary } from '@/libs/theme';
 
 interface Props {
@@ -22,11 +22,11 @@ export const LoadingIcon: React.FC<Props> = () => {
   );
 };
 
-export const Loading: React.FC<Props> = () => {
+export const SquareLoading: React.FC<Props> = () => {
   return (
-    <p className="loading">
+    <div className="loading">
       <LoadingIcon />
       Loading
-    </p>
+    </div>
   );
 };

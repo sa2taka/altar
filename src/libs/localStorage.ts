@@ -8,6 +8,6 @@ export function getTheme(): 'dark' | 'light' {
   return 'dark';
 }
 
-export function setTheme(theme: 'dark' | 'light') {
+export function setTheme(theme: 'dark' | 'light'): void {
   localStorage.setItem(themeKey, theme);
 }

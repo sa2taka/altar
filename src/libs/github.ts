@@ -27,7 +27,7 @@ export function signinWithGithubUsingFirebase(): void {
     });
 }
 
-export function onChangeAuthState(callback: (user: authState) => void): void {
+export function onChangeAuthState(callback: (user: authState | null) => void): void {
   firebase.auth().onAuthStateChanged((firebaseUser) => {
     if (firebaseUser) {
       return firebase
@@ -46,7 +46,7 @@ export function onChangeAuthState(callback: (user: authState) => void): void {
           }
         });
     } else {
-      return null;
+      callback(null);
     }
   });
 }
