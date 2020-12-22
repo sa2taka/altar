@@ -16,8 +16,10 @@ export function signinWithGithubUsingFirebase(): void {
         // @ts-ignore AuthCredential has accessToken but not defines in type
         const token = result.credential.accessToken;
         const user = result.user;
+        const githubId = (result.additionalUserInfo.profile as any).login;
 
         return firebase.firestore().collection('users').doc(result.user.uid).set({
+          githubId: githubId,
           name: user.displayName,
           token: token,
         });
